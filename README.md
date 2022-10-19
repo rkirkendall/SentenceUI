@@ -1,13 +1,18 @@
 # SentenceUI
+<img width="311" alt="Screen Shot 2022-10-18 at 10 05 23 PM" src="https://user-images.githubusercontent.com/1122859/196602163-65edb5c6-14ce-4f25-935a-c3ef2043d32f.png">
 
-SentenceUI is an SwiftUI package for building form interfaces with natural language. This type of UI has been used successfully by apps like Beats by Dre (pre Apple Music) and Philz Coffee; both of which served as inspirations for this project. Natural language interfaces enjoy the advantage of feeling instantly familiar to users. If you can read, you already know how to use it. NLI's can also help to provide structure to the UX, as sentences are inherently narrative. They're fun to develop with, too, because you have to step into the user's story in order to compose the sentences about what they're doing inside of your application.
+SentenceUI is an SwiftUI package for building form interfaces with natural language. 
+
+This type of UI has been used successfully by apps like Beats by Dre (pre Apple Music) and Philz Coffee; both of which served as inspirations for this project. Natural language interfaces enjoy the advantage of feeling instantly familiar to users. If you can read, you already know how to use it. They're fun to develop with, too, because you have to step into the user's story in order to compose the sentences about what they're doing inside of your application.
+
+This is the updated SwiftUI version of my previous [SentenceKit project](https://github.com/rkirkendall/SentenceKit). More thoughts on this [blog post](https://medium.com/@rickykirkendall/philz-app-review-a8efa508fd42). 
 
 The goal for SentenceUI is to make it as easy as possible to implement Sentences in SwiftUI while still allowing for customization and extension. Features include:
 
 - 🔥 Declarative syntax for defining Sentences using defined Fragment types and `@State` properties
 - 🎨 Fully customizable style using native content modifiers
 - 🦄 Built-in block to handle special cases that arise when selected word forms need adjusted (Eg. "None" to "no")
-- 🧑‍🚀 Automatic spacing and wrapping between sentence fragments
+- 🧑‍🚀 Automatic spacing and wrapping between sentence fragments (Thanks to our only dependency, [WrappingHStack!](https://github.com/dkk/WrappingHStack))
 
 ## Install
 Use Swift Package Manager and point to this repo!
