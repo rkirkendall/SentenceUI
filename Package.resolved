@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "WrappingHStack",
+        "repositoryURL": "https://github.com/dkk/WrappingHStack.git",
+        "state": {
+          "branch": null,
+          "revision": "3fa256c606aa6fe33cd537a05f13ddd986d131e4",
+          "version": "2.2.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
