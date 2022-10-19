@@ -17,7 +17,7 @@ extension String: Identifiable {
 
 // Convenience functions to allow for easy Fragment identification and modification
 // inside the specialCases block
-extension Array where Element == Fragment {
+public extension Array where Element == Fragment {
     func modify(_ fragments: [Fragment]) -> [Fragment] {
         return map { (f: Fragment) -> Fragment in
             switch(f) {
@@ -50,17 +50,24 @@ extension Array where Element == Fragment {
 }
 
 public struct ChoiceConfig {
-    let tag: String
-    let value: Binding<String>
-    let options: [String]
-    let mask: String?
+    public let tag: String
+    public let value: Binding<String>
+    public let options: [String]
+    public let mask: String?
     
-    var display: String {
+    public var display: String {
         get { return mask ?? value.wrappedValue }
+    }
+    
+    public init(tag: String, value: Binding<String>, options: [String], mask: String?) {
+        self.tag = tag
+        self.value = value
+        self.options = options
+        self.mask = mask
     }
 }
 
-extension ChoiceConfig {
+public extension ChoiceConfig {
     init(from config: ChoiceConfig, with mask: String){
         tag = config.tag
         value = config.value
