@@ -16,6 +16,7 @@ Use Swift Package Manager and point to this repo!
 ```swift
 import SentenceUI
 
+// Content modifiers used here will be applied to all fragments in a Sentence
 struct BoldRed: SentenceStyleModifier {
     var fontSize: CGFloat = 50
     func body(content: Content) -> some View {
@@ -26,36 +27,47 @@ struct BoldRed: SentenceStyleModifier {
 }
 
 struct SentenceView: View {
+
+    // Define state
     @State var size: String = "Large"
     @State var sweetAmt: String = "Light"
     @State var sweetnerType: String = "Sugar"
     @State var instructions: String = ""
     
     
-    // TODO: API for styling Fragments and Sentences
     var body: some View {
         Sentence(
             fragments: [
-            .text("I would like a"),
+            // Plain text fragment
+            .text("I would like a"), 
+            // Multichoice fragment allow users to select from an array of strings 
             .choice(ChoiceConfig(tag: "size", value: $size, options: ["Large", "Medium", "Small"], mask: nil)),
             .text("drink with"),
             .choice(ChoiceConfig(tag: "sweetAmt", value: $sweetAmt, options: ["Sweet", "Light", "None"], mask: nil)),
             .choice(ChoiceConfig(tag: "sweetType", value: $sweetnerType, options: ["Sugar", "Splenda", "Honey"], mask: nil))
         ],
+            // Special cases block is where you can adjust word forms
             specialCases: { fragments in
+                // Fragments to replace
                 var replacements: [Fragment] = []
                 
+                // Get fragments by tag
                 let amt = fragments.with(tag: "sweetAmt")!
                 let sweetness = fragments.with(tag: "sweetType")!
                 
+                // Since fragments are enums you can handle special cases with case statement
                 switch (amt, sweetness) {
                 case (.choice(let a),.choice(_)):
+                    // In this example, we want to prevent the sentence from reading "with None sugar"
+                    // so we set the fragment mask to "No" so it displays sensibly
                     if a.value.wrappedValue == "None" {                        
                         replacements.append(.choice(ChoiceConfig(from: a, with: "No")))
                     }
                 default:
                     break
                 }
+                
+                // Always call modify with your replacements and return the result
                 return fragments.modify(replacements)
         },
         style: BoldRed())
