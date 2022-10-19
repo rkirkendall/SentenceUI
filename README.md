@@ -7,7 +7,7 @@ SentenceUI is an SwiftUI package for building form interfaces with natural langu
 
 The goal for SentenceUI is to make it as easy as possible to implement Sentences in SwiftUI while still allowing for customization and extension. Features include:
 
-- 🔥 Declarative syntax for defining Sentences using defined Fragment types and `@State` properties
+- 🔥 Declarative syntax for building Sentences using defined Fragment types and `@State` properties
 - 🎨 Fully customizable style using native content modifiers
 - 🏛 Built using native UI elements such as Text, TextField, Menu, and Picker
 - 🦄 Built-in block to handle special cases that arise when selected word forms need adjusted (Eg. "None" to "no")
